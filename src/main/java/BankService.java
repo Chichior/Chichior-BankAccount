@@ -1,3 +1,4 @@
+//import java.util.Scanner;
 /**
  * This service class is intended to contain the basic logic for deposits and withdrawls to a bank account
  * Separating menu logic and bank logic is good for two reasons: it makes both classes as simple
@@ -23,7 +24,17 @@ public class BankService {
      * @param amount the amount to be deposited.
      */
     public void deposit(double amount){
+        
+        //Tell customer how much to deposit.
+       
+        //Add amount to the customer balance. --balance
+        balance = balance + amount;
+       
+        //Taking user input of amount. --amount
+        System.out.println("You deposited " + (amount));
 
+        //Give customer total balance. --balance
+        System.out.println("Your new balance is " + (balance));
     }
 
     /**
@@ -33,6 +44,20 @@ public class BankService {
      */
     public void withdraw(double amount){
 
+        //Customer cannot have a negative balance. Program exits if this occurs.
+        if(amount > balance){  
+        
+        System.out.println("You are going to overdraft. Transaction cannot be completed.");
+        
+        } else{
+            
+            balance = balance - amount; 
+            System.out.println("You withdrew " + (amount));
+            System.out.println("Your new balance is " + (balance));
+            
+            
+        }
+
     }
 
     /**
@@ -40,6 +65,7 @@ public class BankService {
      * @return the user's balance.
      */
     public double getBalance(){
-        return 0;
+        
+        return balance;
     }
 }
